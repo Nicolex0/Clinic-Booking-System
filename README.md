@@ -56,4 +56,4 @@ clinic-booking-system/
 
 Here’s the visual representation of the Clinic Booking System database schema:
 
-![ERD]()
+![Image](https://github.com/user-attachments/assets/2b2368dd-fc7c-4043-b87e-ef822dc2ab96)
