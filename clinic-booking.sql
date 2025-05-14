@@ -65,3 +65,18 @@ CREATE TABLE appointments (
         FOREIGN KEY (patient_id) REFERENCES patients(patient_id)
         ON DELETE CASCADE
 );
+
+-- Table for patient services (many-to-many relationship)
+CREATE TABLE patient_services (
+    patient_id INT NOT NULL,   -- Patient who received the service
+    service_id INT NOT NULL,              -- Service that was provided
+    received_at DATETIME DEFAULT CURRENT_TIMESTAMP,        -- When the service was received
+
+    PRIMARY KEY (patient_id, service_id, received_at),        -- Composite primary key
+
+    FOREIGN KEY (patient_id) REFERENCES patients(patient_id)
+        ON DELETE CASCADE,
+
+    FOREIGN KEY (service_id) REFERENCES services(service_id)
+        ON DELETE CASCADE
+);
