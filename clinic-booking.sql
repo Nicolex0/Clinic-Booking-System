@@ -44,3 +44,24 @@ CREATE TABLE services (
     description TEXT,                        
     price DECIMAL(10, 2) NOT NULL     -- Price of the service
 );
+
+-- Table for appointments
+CREATE TABLE appointments (
+    appointment_id INT AUTO_INCREMENT PRIMARY KEY,          
+    doctor_id INT NOT NULL,                   -- Doctor assigned to appointment
+    patient_id INT NOT NULL,            -- Patient attending the appointment
+    appointment_date DATETIME NOT NULL,          -- Date and time of the appointment
+    notes TEXT,              -- Optional notes about the appointment
+    status ENUM('Scheduled', 'Completed', 'Cancelled') 
+           DEFAULT 'Scheduled',             -- Appointment status
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,  -- When appointment was booked
+
+    -- Foreign key constraints
+    CONSTRAINT fk_appointment_doctor 
+        FOREIGN KEY (doctor_id) REFERENCES doctors(doctor_id)
+        ON DELETE CASCADE,
+
+    CONSTRAINT fk_appointment_patient 
+        FOREIGN KEY (patient_id) REFERENCES patients(patient_id)
+        ON DELETE CASCADE
+);
