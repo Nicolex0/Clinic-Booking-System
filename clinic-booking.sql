@@ -19,3 +19,10 @@ CREATE TABLE doctors (
     specialization_id INT,     -- Foreign key to specializations
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP        -- When the doctor was added
 );
+
+-- Add foreign key to link doctor with a specialization
+ALTER TABLE doctors
+ADD CONSTRAINT fk_doctor_specialization
+FOREIGN KEY (specialization_id)
+REFERENCES specializations(specialization_id)
+ON DELETE SET NULL;   -- If specialization is deleted, set to NULL     
