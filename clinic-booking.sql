@@ -25,4 +25,14 @@ ALTER TABLE doctors
 ADD CONSTRAINT fk_doctor_specialization
 FOREIGN KEY (specialization_id)
 REFERENCES specializations(specialization_id)
-ON DELETE SET NULL;   -- If specialization is deleted, set to NULL     
+ON DELETE SET NULL;   -- If specialization is deleted, set to NULL 
+
+-- Table for patients
+CREATE TABLE patients (
+    patient_id INT AUTO_INCREMENT PRIMARY KEY,           -- Unique ID for each patient
+    full_name VARCHAR(100) NOT NULL,           
+    email VARCHAR(100) UNIQUE NOT NULL,                -- Email must be unique and required
+    phone VARCHAR(15),           -- Optional phone number
+    date_of_birth DATE,                                      
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP       -- When the patient record was created
+);
