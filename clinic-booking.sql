@@ -36,3 +36,11 @@ CREATE TABLE patients (
     date_of_birth DATE,                                      
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP       -- When the patient record was created
 );
+
+-- Table for services offred by the clinic
+CREATE TABLE services (
+    service_id INT AUTO_INCREMENT PRIMARY KEY,            -- Unique ID for each service
+    name VARCHAR(100) NOT NULL UNIQUE,       -- Name of the service (must be unique)
+    description TEXT,                        
+    price DECIMAL(10, 2) NOT NULL     -- Price of the service
+);
